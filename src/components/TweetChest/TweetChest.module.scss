@@ -1,0 +1,52 @@
+.chest_img {
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 20px !important;
+    animation: chestAnimation 3s ease-in-out infinite;
+}
+
+@keyframes chestAnimation {
+    0% {
+        transform: translateY(0) rotate(0);
+    }
+
+    30% {
+        transform: translateY(-10px) rotate(0);
+    }
+
+    35% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+
+    40% {
+        transform: translateY(-10px) rotate(-10deg);
+    }
+
+    45% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(-10deg);
+    }
+
+    55% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+
+    60% {
+        transform: translateY(-10px) rotate(-10deg);
+    }
+
+    65% {
+        transform: translateY(-10px) rotate(10deg);
+    }
+
+    70% {
+        transform: translateY(-10px) rotate(0);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0);
+    }
+}

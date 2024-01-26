@@ -1,0 +1,477 @@
+.simple_home {
+    padding: 0 32px;
+    box-sizing: border-box;
+
+    .container {
+        position: relative;
+    }
+
+    .output {
+        padding-top: 86px;
+
+
+        .describe {
+            text-align: center;
+            font-size: 16px;
+            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+            font-weight: 500;
+            color: #666666;
+            line-height: 24px;
+            text-align: center;
+        }
+
+        .img_wrap {
+            margin-top: 20px;
+            width: 436px;
+            height: 327px;
+            border-radius: 16px 16px 16px 16px;
+            overflow: hidden;
+            margin-top: 20px;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+            }
+        }
+
+        .output_list {
+            margin-top: 20px;
+        }
+
+        .output_item {
+            display: flex;
+            align-items: center;
+
+            .output_icon {
+                width: 114px;
+                height: 114px;
+                flex-shrink: 0;
+                border-radius: 8px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .output_info {
+                margin-left: 16px;
+
+                .output_info__title {
+                    font-size: 20px;
+                    font-family: Bai Jamjuree-Bold, Bai Jamjuree;
+                    font-weight: bold;
+                    color: #000000;
+                    line-height: 23px;
+                }
+
+                .output_info__num {
+                    font-size: 12px;
+                    font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                    font-weight: 500;
+                    color: #0047E1;
+                    line-height: 14px;
+                    margin-top: 8px;
+                }
+
+                .output_info__progress {
+                    display: flex;
+                    align-items: center;
+
+                    &_wrap {
+                        width: 196px;
+                        height: 10px;
+                        border: 1px solid #000000;
+
+                        &__fill {
+                            width: 0%;
+                            height: 100%;
+                            border-right: 1px solid #000000;
+                            background-color: #24F3FD;
+                        }
+                    }
+
+                    &_time {
+                        font-size: 12px;
+                        font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                        font-weight: 500;
+                        color: #000000;
+                        line-height: 14px;
+                        margin-left: 4px;
+                    }
+                }
+
+                .output_info__operation {
+                    display: flex;
+                    align-items: center;
+                    margin-top: 18px;
+                    gap: 16px;
+
+                    .output_btn {
+                        padding: 0 16px;
+                        min-width: 74px;
+                        height: 36px;
+                        width: max-content;
+                        border-radius: 36px;
+                        font-size: 16px;
+                        font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                        font-weight: 500;
+                        color: #FFFFFF !important;
+                        border: none;
+                        background-color: #000000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+            }
+        }
+    }
+
+    .invite {
+        .back {
+            position: absolute;
+            font-size: 24px;
+            top: 12px;
+            left: 0;
+            vertical-align: top;
+            cursor: pointer;
+        }
+
+
+
+        .code_list {
+            border-radius: 16px;
+            overflow: hidden;
+            margin-top: 20px;
+            height: calc(100vh - 77px - 56px - 20px - 48px - 96px);
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 6px;
+                height: 6px;
+                border-radius: 6px;
+                background-color: transparent;
+            }
+
+            /*定义滚动条轨道 内阴影+圆角*/
+            &::-webkit-scrollbar-track {
+                border-radius: 6px;
+                background-color: rgba(0, 0, 0, 0.1);
+            }
+
+            /*定义滑块 内阴影+圆角*/
+            &::-webkit-scrollbar-thumb {
+                border-radius: 6px;
+                background-color: rgba(0, 0, 0, 0.2);
+            }
+
+            .code_item {
+                height: 76px;
+                padding: 0 16px;
+                box-sizing: border-box;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background-color: #EFF1F1;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+                &:last-of-type {
+                    border-bottom: none;
+                }
+
+                .left {
+                    display: flex;
+                    align-items: center;
+
+                    .code_item__icon {
+                        width: 20px;
+                        height: 20px;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    .code_item__id {
+                        font-size: 14px;
+                        font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                        font-weight: 500;
+                        color: #000000;
+                        line-height: 16px;
+                        margin-left: 10px;
+                    }
+                }
+
+                .right {
+                    .code_copy_btn {
+                        width: 88px;
+                        height: 36px;
+                        border-radius: 36px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        font-size: 13px;
+                        font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                        font-weight: 500;
+                        color: #FFFFFF !important;
+                        background-color: #000000;
+                        border: none;
+
+                        img {
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 4px;
+                        }
+
+                        &:disabled {
+                            filter: opacity(0.4);
+                        }
+                    }
+                }
+            }
+        }
+
+        .buy_btn {
+            margin-top: 64px;
+            width: 100%;
+            height: 48px;
+            border-radius: 48px;
+            font-size: 20px;
+            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+            font-weight: 500;
+            color: #FFFFFF !important;
+            background-color: #000000;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .question {
+        position: absolute;
+        font-size: 24px;
+        top: 12px;
+        right: 0;
+        vertical-align: top;
+    }
+
+    .daily_attendance {
+        padding-top: 10px;
+
+        .days_list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin-top: 20px;
+
+            .days_item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                width: 132px;
+                height: 178px;
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+                cursor: pointer;
+
+                .title {
+                    height: 26px;
+                    font-size: 14px;
+                    font-family: Bai Jamjuree-SemiBold, Bai Jamjuree;
+                    font-weight: 600;
+                    color: #FFFFFF;
+                    -webkit-text-stroke: 1px #2995F9;
+                    text-stroke: 1px #2995F9;
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: #FFFFFF;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+
+                .content {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    flex-grow: 1;
+                    position: relative;
+
+                    // .img_wrap {
+                    //     width: 104px;
+                    //     height: 104px;
+                    //     margin-top: 14px;
+                    // }
+
+                    .nums {
+                        position: absolute;
+                        left: 0;
+                        right: 0;
+                        bottom: 16px;
+                        margin: auto;
+                        min-width: 59px;
+                        width: max-content;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                        height: 28px;
+                        border-radius: 28px;
+                        background-color: rgba(0, 0, 0, 0.30);
+                        font-size: 16px;
+                        font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                        font-weight: 500;
+                        color: #FFFFFF;
+                        display: flex;
+                        align-items: center;
+                    }
+
+                    .done_img {
+                        width: 83px;
+                        height: 62px;
+                        position: absolute;
+                        left: 28px;
+                        top: 34px;
+                        visibility: hidden;
+                    }
+                }
+
+                &__done {
+                    filter: brightness(0.6);
+
+                    .done_img {
+                        visibility: visible !important
+                    }
+                }
+            }
+        }
+    }
+}
+
+.simple_home_modal {
+    :global {
+        .ant-modal-content {
+            padding: 26px 30px 40px 30px !important;
+        }
+
+        .ant-modal-title {
+            font-size: 20px;
+            font-family: Bai Jamjuree-Bold, Bai Jamjuree;
+            font-weight: bold;
+            color: #030604;
+            line-height: 23px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .ant-modal-close-x {
+            color: #030604;
+            font-size: 24px;
+        }
+    }
+}
+
+.question_modal {
+    p {
+        font-size: 16px;
+        font-family: Bai Jamjuree-Regular, Bai Jamjuree;
+        font-weight: 400;
+        color: #666666;
+        line-height: 24px;
+        margin-top: 6px;
+
+        &:first-of-type {
+            margin-top: 20px;
+        }
+    }
+}
+
+.redeem_modal {
+    .redeem_modal__container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+
+        .cost {
+            display: flex;
+            align-items: center;
+
+            .cost_icon {
+                width: 48px;
+                height: 48px;
+                border-radius: 8px;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .cost_num {
+                font-size: 16px;
+                font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                font-weight: 500;
+                color: #000000;
+                line-height: 19px;
+                margin-left: 4px;
+            }
+        }
+
+        .title {
+            font-size: 16px;
+            font-family: Bai Jamjuree-Bold, Bai Jamjuree;
+            font-weight: bold;
+            color: #030604;
+            line-height: 20px;
+            margin-top: 16px;
+            text-align: center;
+        }
+
+        .confirm_btn {
+            min-width: 71px;
+            width: max-content;
+            height: 34px;
+            border-radius: 34px;
+            background-color: #000000;
+            font-size: 14px;
+            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+            font-weight: 500;
+            color: #FFFFFF !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            margin-top: 20px;
+        }
+
+        .result {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .result_icon {
+                width: 48px;
+                height: 48px;
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .result_title {
+                font-size: 16px;
+                font-family: Bai Jamjuree-Bold, Bai Jamjuree;
+                font-weight: bold;
+                color: #030604;
+                line-height: 19px;
+                margin-top: 16px;
+            }
+        }
+    }
+}

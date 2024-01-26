@@ -1,0 +1,426 @@
+.quest {
+    .quest_container {
+
+        .quest_tabs {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 32px;
+
+            .quest_tabs__item {
+                padding: 0 16px;
+                font-size: 16px;
+                font-family: Bai Jamjuree-Regular, Bai Jamjuree;
+                font-weight: 400;
+                color: #030604;
+                line-height: 19px;
+                width: max-content;
+                height: 36px;
+                border-radius: 36px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+
+                &_active {
+                    background-color: #EFF1F1;
+                }
+            }
+        }
+
+        .quest_list {
+            .quest_item {
+                width: 100%;
+                min-height: 149px;
+                padding: 20px 14px 20px 16px;
+                box-sizing: border-box;
+                border-radius: 16px;
+                border: 1px solid rgba(0, 0, 0, 0.1);
+                margin-top: 16px;
+                cursor: pointer;
+
+                .info {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .left {
+                        display: flex;
+                        align-items: flex-end;
+
+                        .icon_wrap {
+                            width: 48px;
+                            height: 48px;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 8px;
+                            }
+                        }
+
+                        .nums {
+                            font-size: 16px;
+                            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                            font-weight: 500;
+                            color: #030604;
+                            line-height: 19px;
+                            margin-left: 4px;
+                        }
+                    }
+
+                    .right_status {
+                        width: max-content;
+                        height: 36px;
+                        border-radius: 36px;
+                        padding: 0 16px;
+                        box-sizing: border-box;
+                        border: 1px solid #030604;
+                        font-size: 16px;
+                        font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                        font-weight: 500;
+                        color: #030604;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                    }
+                }
+
+                .title {
+                    font-size: 18px;
+                    font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                    font-weight: 500;
+                    color: #030604;
+                    line-height: 21px;
+                    margin-top: 16px;
+                }
+
+                .description {
+                    font-size: 14px;
+                    font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                    font-weight: 500;
+                    color: #666666;
+                    line-height: 16px;
+                    margin-top: 4px;
+                }
+            }
+        }
+
+        .quest_details {
+            .quest_details__container {
+                padding-top: 16px;
+
+                .tasks_list {
+                    border-radius: 16px;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    background-color: #EFF1F1;
+
+                    .task_item {
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 20px 16px 20px 18px;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+                        &:last-of-type {
+                            border-bottom: none;
+                        }
+
+                        .left {
+                            display: flex;
+                            align-items: center;
+
+                            .icon_wrap {
+                                width: 20px;
+                                height: 20px;
+                                background-color: #ddd;
+                                border-radius: 4px;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+
+                            .title {
+                                font-size: 16px;
+                                font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                                font-weight: 500;
+                                color: #030604;
+                                line-height: 19px;
+                                margin-left: 4px;
+                            }
+                        }
+
+                        .right {
+                            .task_btn {
+                                min-width: 36px;
+                                width: max-content;
+                                height: 36px;
+                                padding: 0 16px;
+                                border-radius: 36px;
+                                box-sizing: border-box;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+
+
+                                color: #FFFFFF !important;
+                                background-color: #030604;
+                                border: 1px solid 030604;
+
+                                &__done {
+                                    font-size: 16px;
+                                    font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                                    font-weight: 500;
+                                    color: rgba(255, 255, 255, 0.8) !important;
+                                    background-color: #999999;
+                                    border: 1px solid rgba(0, 0, 0, 0.1);
+                                }
+
+                                img {
+                                    width: 18px;
+                                    height: 18px;
+                                    margin-left: 4px;
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                .quest_details_reward {
+                    margin-top: 16px;
+                    border-radius: 16px;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+                    padding-bottom: 20px;
+                    box-sizing: border-box;
+
+                    .reward__label {
+                        font-size: 20px;
+                        font-family: Bai Jamjuree-SemiBold, Bai Jamjuree;
+                        font-weight: 600;
+                        color: #030604;
+                        line-height: 23px;
+                        padding: 20px 10px 16px 10px;
+                        box-sizing: border-box;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                    }
+
+                    .reward__container {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .title {
+                            margin-top: 16px;
+                            font-size: 16px;
+                            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                            font-weight: 500;
+                            color: #030604;
+                            line-height: 19px;
+                        }
+
+                        .icon_wrap {
+                            margin-top: 16px;
+                            width: 134px;
+                            height: 134px;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 8px;
+                            }
+                        }
+
+                        .open_btn {
+                            margin-top: 16px;
+                            min-width: 36px;
+                            width: max-content;
+                            height: 36px;
+                            padding: 0 16px;
+                            border-radius: 36px;
+                            box-sizing: border-box;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            font-size: 16px;
+                            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                            font-weight: 500;
+                            color: #FFFFFF !important;
+                            background-color: #030604;
+                            border: 1px solid #030604;
+
+                            &__done {
+                                color: rgba(255, 255, 255, 0.8) !important;
+                                background-color: #999999;
+                                border: 1px solid rgba(0, 0, 0, 0.1);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .quest_guide {
+            .quest_details_container {
+                .guide_container {
+                    padding: 10px 20px;
+                    border-radius: 16px;
+                    border: 1px solid rgba(0, 0, 0, 0.10);
+                    background-color: rgba(239, 241, 241, 1);
+
+                    .input_wrap {
+                        padding-left: 10px;
+                        box-sizing: border-box;
+                        height: 36px;
+                        border-radius: 36px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        border: 1px solid rgba(0, 0, 0, 0.10);
+
+                        .text {
+                            font-size: 14px;
+                            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                            font-weight: 500;
+                            color: #999999;
+                            flex-grow: 1;
+                        }
+
+                        .suffix_btn {
+                            width: 53px;
+                            height: 36px;
+                            border-radius: 36px;
+                            background-color: rgba(0, 0, 0, 1);
+                            border: none;
+                            font-size: 16px;
+                            font-family: Bai Jamjuree-Medium, Bai Jamjuree;
+                            font-weight: 500;
+                            color: #FFFFFF !important;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+                    }
+
+                    .guide_description {
+                        margin-top: 16px;
+                        font-size: 16px;
+                        font-family: Bai Jamjuree, Bai Jamjuree;
+                        font-weight: 500;
+                        color: #000000;
+                        line-height: 24px;
+                    }
+                }
+
+                .guide_reward {
+                    margin-top: 16px;
+                    border-radius: 16px;
+                    border: 1px solid rgba(0, 0, 0, 0.1);
+
+                    .label {
+                        font-size: 20px;
+                        font-family: Bai Jamjuree-SemiBold, Bai Jamjuree;
+                        font-weight: 600;
+                        color: #000000;
+                        line-height: 23px;
+                        padding: 20px 10px 16px 10px;
+                        box-sizing: border-box;
+                        border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+                    }
+
+                    .reward_list {
+                        display: flex;
+                        align-items: center;
+                        gap: 16px;
+                        padding-top: 16px;
+                        padding-bottom: 20px;
+                        box-sizing: border-box;
+
+                        .reward_item {
+                            width: 64px;
+                            height: 64px;
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                                border-radius: 8px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.quest_modal {
+    :global {
+        .ant-modal-content {
+            padding: 26px 30px 40px 30px !important;
+        }
+
+        .ant-modal-header {
+            margin-bottom: 0;
+        }
+
+        .ant-modal-title {
+            font-size: 20px !important;
+            font-family: Bai Jamjuree-Bold, Bai Jamjuree;
+            font-weight: bold !important;
+            color: #030604;
+            line-height: 23px !important;
+            padding-bottom: 16px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .ant-modal-body {
+            margin-top: 20px;
+        }
+
+        .ant-modal-close-x {
+            color: #030604;
+            font-size: 24px;
+        }
+    }
+}
+
+.open_modal {
+    .open_modal_container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .img_wrap {
+            width: 134px;
+            height: 134px;
+
+            img {
+                border-radius: 8px;
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .title {
+            font-size: 16px;
+            font-family: Bai Jamjuree-Bold, Bai Jamjuree;
+            font-weight: bold;
+            color: #030604;
+            line-height: 20px;
+            margin-top: 16px;
+        }
+
+        .description {
+            font-size: 14px;
+            font-family: Bai Jamjuree-Regular, Bai Jamjuree;
+            font-weight: 400;
+            color: #030604;
+            line-height: 28px;
+            margin-top: 4px;
+        }
+    }
+}

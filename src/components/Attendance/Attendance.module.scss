@@ -1,0 +1,35 @@
+.attendance {
+    position: absolute;
+    right: 0;
+    top: 800px;
+    width: 72px;
+    height: 94px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(230, 249, 250, 1);
+    border: 1px solid rgba(0, 71, 225, 0.10);
+    border-radius: 8px;
+    padding-top: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    .attendance_icon_wrap {
+        width: 46px;
+        height: 54px;
+
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    .attendance_text {
+        font-size: 16px;
+        font-family: Bai Jamjuree, Bai Jamjuree;
+        font-weight: 600;
+        color: #0047E1;
+        line-height: 19px;
+        margin-top: 4px;
+    }
+}
