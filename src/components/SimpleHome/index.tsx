@@ -2,13 +2,14 @@ import { useCallback, useEffect, useMemo, useState, useRef } from "react";
 import styles from "./SimpleHome.module.scss";
 import TopUserInfo from "../TopUserInfo";
 import { Button, Modal, message } from "antd";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import { QuestionCircleOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useUser, useCave, useInviteCode, useMetaMask } from "../../hook";
 import InitializeLoading from "../InitializeLoading";
 import TopNavigation from "../TopNavigation";
 import Attendance from "../Attendance";
+import { getSignInWeeks } from "../../api/user";
 
-import { formatMillisecondsToTime, copy } from "../../utils";
+import { formatMillisecondsToTime2, copy } from "../../utils";
 
 import miningImg from "../../assets/img/mining.gif";
 import miningIconImg from "../../assets/img/mineral-icon.png";
@@ -48,13 +49,15 @@ const Output = ({
     const _list = caveList.map((item, index) => {
       //最大挖矿数
       const maxMineralNum = 1008;
+      //最大挖矿毫秒
+      const maxMinuteTime = 12 * 3600000;
       //当前挖矿数 1秒 0.0234
       let mineralNum = ((timestamp - item.startProductionTime) / 1000) * 0.0234;
       mineralNum = Math.min(maxMineralNum, Number(mineralNum.toFixed(4)));
       mineralNum = mineralNum < 0 ? 0 : mineralNum;
       //已挖矿多少分钟
-      const mineralMinuteTime = formatMillisecondsToTime(
-        timestamp - item.startProductionTime
+      const mineralMinuteTime = formatMillisecondsToTime2(
+        Math.min(timestamp - item.startProductionTime, maxMinuteTime)
       );
       return {
         ...item,
@@ -99,49 +102,56 @@ const Output = ({
       <div className={styles.img_wrap}>
         <img src={miningImg} alt="" />
       </div>
-      <ul className={styles.output_list}>
-        {formatCavesList.map((item, index) => {
-          return (
-            <li className={styles.output_item} key={item.id}>
-              <div className={styles.output_icon}>
-                <img src={miningIconImg} alt="" />
-              </div>
-              <div className={styles.output_info}>
-                <div className={styles.output_info__title}>
-                  Output to be claimed
+      <InitializeLoading loading={!formatCavesList.length}>
+        <ul className={styles.output_list}>
+          {formatCavesList.map((item, index) => {
+            return (
+              <li className={styles.output_item} key={item.id}>
+                <div className={styles.output_icon}>
+                  <img src={miningIconImg} alt="" />
                 </div>
-                <div className={styles.output_info__num}>{item.mineralNum}</div>
-                <div className={styles.output_info__progress}>
-                  <div className={styles.output_info__progress_wrap}>
-                    <div
-                      style={{
-                        width: `${item.mineralProgress * 100}%`,
-                        borderRight: item.mineralProgress === 1 ? "none" : "",
-                      }}
-                      className={styles.output_info__progress_wrap__fill}
-                    ></div>
+                <div className={styles.output_info}>
+                  <div className={styles.output_info__title}>
+                    Output to be claimed
                   </div>
-                  <div className={styles.output_info__progress_time}>
-                    {item.mineralMinuteTime}
+                  <div className={styles.output_info__num}>
+                    {item.mineralNum}
+                  </div>
+                  <div className={styles.output_info__progress}>
+                    <div className={styles.output_info__progress_wrap}>
+                      <div
+                        style={{
+                          width: `${item.mineralProgress * 100}%`,
+                          borderRight: item.mineralProgress === 1 ? "none" : "",
+                        }}
+                        className={styles.output_info__progress_wrap__fill}
+                      ></div>
+                    </div>
+                    <div className={styles.output_info__progress_time}>
+                      {item.mineralMinuteTime}
+                    </div>
+                  </div>
+                  <div className={styles.output_info__operation}>
+                    <Button
+                      className={styles.output_btn}
+                      onClick={() => handleClaim(item.id)}
+                      loading={claimLoading}
+                    >
+                      {!claimLoading && "Claim"}
+                    </Button>
+                    <Button
+                      onClick={handleRedeem}
+                      className={styles.output_btn}
+                    >
+                      Exchange
+                    </Button>
                   </div>
                 </div>
-                <div className={styles.output_info__operation}>
-                  <Button
-                    className={styles.output_btn}
-                    onClick={() => handleClaim(item.id)}
-                    loading={claimLoading}
-                  >
-                    {!claimLoading && "Claim"}
-                  </Button>
-                  <Button onClick={handleRedeem} className={styles.output_btn}>
-                    Exchange
-                  </Button>
-                </div>
-              </div>
-            </li>
-          );
-        })}
-      </ul>
+              </li>
+            );
+          })}
+        </ul>
+      </InitializeLoading>
     </div>
   );
 };
@@ -339,6 +349,9 @@ const Question = () => {
   );
 };
 
+const WeeksNumber = [10, 15, 20, 30, 40, 50, 100];
+let _LoadingIndex: undefined | number = undefined;
+let RefreshCountdown = 15;
 const DailyAttendance = ({
   setSectionKeyOutput,
   updateUserInfo,
@@ -347,19 +360,76 @@ const DailyAttendance = ({
   updateUserInfo: () => void;
 }) => {
   const { contractAttendance } = useMetaMask();
-  const [attendanceLoading, setAttendanceLoading] = useState(false);
-  const [days, setDays] = useState<any[]>([1, 2, 3, 4]);
+  const [loadingIndex, setLoading] = useState<undefined | number>(undefined);
+  const [days, setDays] = useState<any[]>([]);
+  const [dayOfWeek, setDayOfWeek] = useState(0);
 
-  const handleAttendance = async () => {
+  const handleAttendance = async (item: any, index: number) => {
+    if (
+      dayOfWeek !== index ||
+      Boolean(item.signedIn) === true ||
+      loadingIndex !== undefined
+    ) {
+      return;
+    }
     try {
-      setAttendanceLoading(true);
+      setLoading(index);
+      _LoadingIndex = index;
       await contractAttendance();
+      setTimeout(() => {
+        refresh();
+      }, 2000);
     } catch (error) {
       console.error(error);
-    } finally {
-      setAttendanceLoading(false);
+      setLoading(undefined);
+      _LoadingIndex = undefined;
     }
   };
+
+  const refresh = () => {
+    if (RefreshCountdown > 0) {
+      RefreshCountdown -= 1;
+      updateUserInfo();
+      updateSignInWeeks();
+      setTimeout(() => {
+        refresh();
+      }, 2000);
+    } else {
+      RefreshCountdown = 15;
+    }
+  };
+
+  const updateSignInWeeks = () => {
+    getSignInWeeks().then((res) => {
+      const _list = res.map((item: any, index: number) => ({
+        label: `${index + 1} Day`,
+        num: WeeksNumber[index],
+        signedIn: item,
+      }));
+      setDays(_list);
+      if (_LoadingIndex !== undefined) {
+        const _item = _list[_LoadingIndex];
+        console.log(_item);
+        if (_item?.signedIn) {
+          setLoading(undefined);
+          _LoadingIndex = undefined;
+          RefreshCountdown = 0;
+        }
+      }
+    });
+  };
+
+  useEffect(() => {
+    updateSignInWeeks();
+    const today = new Date();
+    let dayOfWeek = today.getDay();
+    // ['周日', '周一', '周二',...]
+    // 下标转
+    // ['周一', '周二',..., '周日']
+    dayOfWeek = dayOfWeek - 1 < 0 ? 7 : dayOfWeek - 1;
+    setDayOfWeek(dayOfWeek);
+  }, []);
+
   return (
     <div className={styles.daily_attendance}>
       <TopNavigation backText="Back" onBack={setSectionKeyOutput} />
@@ -368,22 +438,28 @@ const DailyAttendance = ({
           {days.map((item, index) => (
             <div
               className={`${styles.days_item} ${
-                index <= 1 ? styles.days_item__done : ""
+                item.signedIn ? styles.days_item__done : ""
+              } ${loadingIndex === index ? styles.days_item__loading : ""} ${
+                index < dayOfWeek ? styles.days_item__pass : ""
               }`}
               style={{ backgroundImage: `url(${dailyAttendanceBgImg})` }}
-              onClick={handleAttendance}
+              onClick={() => handleAttendance(item, index)}
             >
-              <div className={styles.title}>{`${index + 1}Day`}</div>
+              <div className={styles.title}>{item.label}</div>
               <div className={styles.content}>
-                {/* <div className={styles.img_wrap}>
-                  <img src={miningIconImg} alt="" />
-                </div> */}
-                <div className={styles.nums}>+250</div>
+                <div className={styles.nums}>+{item.num}</div>
                 <img
                   className={styles.done_img}
                   src={dailyAttendanceDoneIconImg}
                   alt=""
                 />
+                {loadingIndex === index && (
+                  <div className={styles.loading_wrap}>
+                    <LoadingOutlined
+                      style={{ fontSize: "40px", color: "#fff" }}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           ))}

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { getAccountsSign } from "../api/user";
-import { getStoreAddress, getStoreSignature, delay, getStoreChainId, getStoreContract } from "../utils"
+import { delay } from "../utils"
+import { getStoreAddress, getStoreSignature, getStoreChainId, getStoreContract } from "../utils/metaMask"
 
 let _Address = ''
 let _Signature = ''

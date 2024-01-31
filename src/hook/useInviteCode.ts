@@ -7,7 +7,6 @@ export default function useInviteCode() {
     const updateInviteCodes = async () => {
         const list = await getAccountsInviteCodes()
         setInviteCodes(list)
-        console.log(list)
         return list
     }
     const buyInviteCodes = async () => {

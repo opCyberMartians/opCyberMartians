@@ -72,3 +72,9 @@ export const bindWallet = ({ address, sign, signature }: {
         }
     })
 }
+
+// 签到记录
+export const getSignInWeeks = () => {
+    // 返回['周一', '周二',..., '周日'] 是否已签到
+    return fetchApi(`/sign-in/weeks`)
+}

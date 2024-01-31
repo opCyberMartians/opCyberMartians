@@ -6,7 +6,6 @@ export default function useCave() {
     const updateCaves = async () => {
         const list = await getMintCaves()
         setCaveList(list)
-        console.log(list)
         return list
     }
     const claimCave = async (id: string) => {

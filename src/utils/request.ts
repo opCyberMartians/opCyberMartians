@@ -30,14 +30,19 @@ export default async function fetchApi(url: string, options?: Options) {
         if (res.code === 0) {
             return res.data;
         }
-        // token失效
-        else if (res.code === -2) {
-            return Promise.reject(res)
-        }
         else {
-            const msg = res.data || res.msg
-            message.error(msg)
-            return Promise.reject(res)
+            if (res?.data === 'please login') {
+                res.code = -2
+            }
+            // token失效
+            if (res.code === -2) {
+                return Promise.reject(res)
+            }
+            else {
+                const msg = res.data || res.msg
+                message.error(msg)
+                return Promise.reject(res)
+            }
         }
     } catch (error) {
         console.error('Fetch请求错误:', error);

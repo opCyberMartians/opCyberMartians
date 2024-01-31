@@ -292,6 +292,7 @@
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    user-select: none;
                 }
 
                 .content {
@@ -327,6 +328,7 @@
                         color: #FFFFFF;
                         display: flex;
                         align-items: center;
+                        user-select: none;
                     }
 
                     .done_img {
@@ -336,15 +338,39 @@
                         left: 28px;
                         top: 34px;
                         visibility: hidden;
+
+                    }
+
+                    .loading_wrap {
+                        position: absolute;
+                        left: 0;
+                        top: 0;
+                        right: 0;
+                        bottom: 0;
+                        margin: auto;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-bottom: 26px;
                     }
                 }
 
                 &__done {
                     filter: brightness(0.6);
+                    cursor: auto;
 
                     .done_img {
                         visibility: visible !important
                     }
+                }
+
+                &__loading {
+                    filter: brightness(0.8);
+                }
+
+                &__pass {
+                    filter: brightness(0.6);
+                    cursor: auto;
                 }
             }
         }

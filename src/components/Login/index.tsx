@@ -7,8 +7,6 @@ import TopNavigation from "../TopNavigation";
 import { useUser, useExtensionConfig } from "../../hook";
 import { twitterAuth, bindCode, bindWallet } from "../../api/user";
 import { useMetaMask } from "../../hook";
-// import { injectScript } from "../../utils/index";
-// import { getToken } from "../../hook/useUser";
 
 type SectionKeyKeys = "NotLogin" | "BindWallet" | "ImportCode" | "";
 type SetSectionKey = React.Dispatch<React.SetStateAction<SectionKeyKeys>>;
@@ -68,7 +66,15 @@ const ImportCode = ({
       <div className={styles.description}>
         You need a land number to gain the rights to mine ore on Mars. If you
         don’t know how to get a land number, you can get it from the white paper
-        or the official <a href="">Twitter profile</a>.
+        or the official{" "}
+        <a
+          target="_blank"
+          href="https://twitter.com/opCyberMartians"
+          rel="noreferrer"
+        >
+          Twitter profile
+        </a>
+        .
       </div>
       <div className={styles.input_wrap}>
         <Input className={styles.input} value={code} onChange={onInputChange} />

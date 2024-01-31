@@ -56,6 +56,18 @@ export const formatMillisecondsToTime = (milliseconds: number) => {
     return `${formattedMinutes}:${formattedSeconds}`;
 }
 
+// 毫秒 转化为 '00::00:00' 
+export const formatMillisecondsToTime2 = (milliseconds: number) => {
+    const totalSeconds = Math.floor(milliseconds / 1000);
+    const hours = Math.floor(totalSeconds / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    const padZero = (num: number) => (num < 10 ? '0' + num : num);
+
+    return `${padZero(hours)}:${padZero(minutes)}:${padZero(seconds)}`;
+}
+
 // 复制
 export const copy = (text: string, callback?: () => void) => {
     try {
@@ -66,19 +78,8 @@ export const copy = (text: string, callback?: () => void) => {
             message.success("Copied");
         }
     } catch (error) {
-        message.error("Error");
-    }
-}
-
-export const injectScript = (url: string) => {
-    const scriptExists = !!document.querySelector('script[cybermartins-script]');
-    if (!scriptExists) {
-        const container = document.head || document.documentElement
-        const scriptTag = document.createElement('script')
-        scriptTag.setAttribute('async', 'false')
-        scriptTag.setAttribute('cybermartins-script', '')
-        scriptTag.setAttribute('src', chrome.runtime.getURL(url))
-        container.appendChild(scriptTag)
+        // message.error("Error");
+        console.error(error)
     }
 }
 
@@ -86,85 +87,3 @@ export const delay = (ms: number) => {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-let connectTimer: NodeJS.Timer;
-export const getStoreAddress = () => {
-    return new Promise<string>((resolve, reject) => {
-        connectTimer = setInterval(() => {
-            const address = window.localStorage.getItem("Cyber_Connect_Address");
-            const connectCancel = window.localStorage.getItem("Cyber_Connect_Cancel");
-            if (address) {
-                resolve(address);
-                clearInterval(connectTimer);
-                window.localStorage.removeItem('Cyber_Connect_Address')
-            }
-            else if (connectCancel) {
-                reject('cancel')
-                clearInterval(connectTimer);
-                window.localStorage.removeItem('Cyber_Connect_Cancel')
-            }
-        }, 500);
-    });
-};
-
-let signMessageTimer: NodeJS.Timer;
-export const getStoreSignature = () => {
-    return new Promise<string>((resolve, reject) => {
-        signMessageTimer = setInterval(() => {
-            const signature = window.localStorage.getItem("Cyber_SignMessage_Signature");
-            const signCancel = window.localStorage.getItem("Cyber_SignMessage_Cancel");
-            if (signature) {
-                resolve(signature);
-                clearInterval(signMessageTimer);
-                window.localStorage.removeItem('Cyber_SignMessage_Signature')
-            }
-            else if (signCancel) {
-                reject('cancel')
-                clearInterval(signMessageTimer);
-                window.localStorage.removeItem('Cyber_SignMessage_Cancel')
-            }
-        }, 500);
-    });
-};
-
-let switchChainTimer: NodeJS.Timer;
-export const getStoreChainId = () => {
-    return new Promise<string>((resolve, reject) => {
-        switchChainTimer = setInterval(() => {
-            const chainId = window.localStorage.getItem("Cyber_SwitchChain_Id");
-            const switchCancel = window.localStorage.getItem("Cyber_SwitchChain_Cancel");
-            if (chainId) {
-                resolve(chainId);
-                clearInterval(switchChainTimer);
-                window.localStorage.removeItem('Cyber_SwitchChain_Id')
-            }
-            else if (switchCancel) {
-                reject('cancel')
-                clearInterval(switchChainTimer);
-                window.localStorage.removeItem('Cyber_SwitchChain_Cancel')
-            }
-        }, 500);
-    });
-};
-
-let contractAttendanceTimer: NodeJS.Timer;
-export const getStoreContract = (type: string) => {
-    if (type === 'attendance') {
-        return new Promise<string>((resolve, reject) => {
-            contractAttendanceTimer = setInterval(() => {
-                const res = window.localStorage.getItem("Cyber_Contract_Attendance");
-                const switchCancel = window.localStorage.getItem("Cyber_Contract_Cancel");
-                if (res) {
-                    resolve(res);
-                    clearInterval(contractAttendanceTimer);
-                    window.localStorage.removeItem('Cyber_Contract_Attendance')
-                }
-                else if (switchCancel) {
-                    reject('cancel')
-                    clearInterval(contractAttendanceTimer);
-                    window.localStorage.removeItem('Cyber_Contract_Cancel')
-                }
-            }, 500);
-        });
-    }
-
-};
