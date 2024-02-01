@@ -1,0 +1,950 @@
+[is-device="desktop"] {
+    .banner_wrap {
+        position: relative;
+
+        .home_banner {
+            width: 1920rem;
+            height: 1080rem;
+        }
+
+        .welding {
+            position: absolute;
+            bottom: 360rem;
+            left: 540rem;
+            animation: lightning-anim 1s linear infinite;
+            width: 51rem;
+            object-fit: contain;
+
+            @keyframes lightning-anim {
+                0% {
+                    opacity: 0;
+                }
+
+                5% {
+                    opacity: 1;
+                }
+
+                10% {
+                    opacity: 0;
+                }
+
+                15% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .spray1 {
+            position: absolute;
+            bottom: 5rem;
+            left: 145rem;
+            width: 300rem;
+            object-fit: contain;
+            animation: spray-switch-1 2.5s linear 0.2s infinite alternate;
+            -moz-animation: auto;
+
+            @keyframes spray-switch-1 {
+                0% {
+                    opacity: 1;
+                }
+
+                70% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .spray2 {
+            position: absolute;
+            bottom: 97rem;
+            left: 247rem;
+            width: 188rem;
+            object-fit: contain;
+            animation: spray-switch-2 2.5s linear 0.2s infinite alternate;
+            -moz-animation: auto;
+            opacity: 0;
+
+            @keyframes spray-switch-2 {
+                0% {
+                    opacity: 0;
+                }
+
+                70% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .action {
+            width: 250rem;
+            object-fit: contain;
+            position: absolute;
+            bottom: 300rem;
+            right: 160rem;
+            opacity: 1;
+            animation: opacity-switch 1.8s linear 1.8s infinite alternate;
+
+            @keyframes opacity-switch {
+
+                // 关键帧规则
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .people1 {
+            width: 750rem;
+            object-fit: contain;
+            position: absolute;
+            bottom: 0;
+            right: 180rem;
+            animation: people-switch-1 1.8s cubic-bezier(0.39, 0.58, 0.57, 1) infinite alternate;
+            -moz-animation: auto;
+            opacity: 0;
+
+            @keyframes people-switch-1 {
+
+                // 关键帧规则
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .people2 {
+            width: 750rem;
+            object-fit: contain;
+            position: absolute;
+            bottom: 0;
+            right: 180rem;
+            animation: people-switch-2 1.8s cubic-bezier(0.4, 0, 1, 1) infinite alternate;
+            -moz-animation: auto;
+
+            @keyframes people-switch-2 {
+
+                // 关键帧规则
+                0% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .about_us_wrap {
+        padding: 167rem 209rem 251rem;
+        background-image: url("/image/home-banner-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 127rem;
+
+        .about_us_left {
+            position: relative;
+
+            img {
+                width: 671rem;
+                height: 718rem;
+            }
+        }
+
+        .about_us_right {
+            display: flex;
+            flex-direction: column;
+            gap: 20rem;
+
+            .about_us_title {
+                color: #30effc;
+                font-weight: 400;
+                font-family: Space Ranger;
+                font-size: 60rem;
+            }
+
+            .about_us_describe {
+                font-family: Bai Jamjuree;
+                font-size: 24rem;
+                color: #fafafa;
+            }
+
+            .about_us_but_title {
+                color: #30effc;
+                font-weight: 400;
+                font-family: Space Ranger;
+                font-size: 26rem;
+            }
+
+            .about_us_but_box {
+                display: flex;
+                gap: 20rem;
+
+                .about_us_but {
+                    color: #30effc;
+                    font-family: Bai Jamjuree;
+                    font-size: 26rem;
+                    font-style: normal;
+                    // font-weight: 600;
+                    width: 226rem;
+                    height: 60rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8rem;
+                    background-image: url("/image/but-bg.png");
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+                    cursor: pointer;
+
+                    &:hover {
+                        filter: brightness(1.1);
+                    }
+
+                    img {
+                        width: 36rem;
+                        height: 36rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .carousel_wrap {
+        width: 100%;
+
+        .carousel_bg {
+            position: absolute;
+            filter: blur(30rem) grayscale(60%);
+            z-index: -1;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        // &::before {
+        //     position: absolute;
+        //     content: '';
+        //     display: block;
+        //     background-image: url('/image/carousel-bg1.png');
+        //     background-repeat: no-repeat;
+        //     background-size: 100% 100%;
+        //     filter: blur(30rem) grayscale(60%);
+        //     width: 100%;
+        //     height: 100%;
+        //     z-index: -1;
+        // }
+
+        .carousel_box {
+            display: flex;
+            flex-direction: column;
+            gap: 48rem;
+            position: relative;
+            margin: 126rem 208rem 16rem;
+
+            .LeftCircle,
+            .RightCircle {
+                position: absolute;
+                z-index: 2;
+                color: #fff;
+                font-size: 56rem;
+                cursor: pointer;
+            }
+
+            .LeftCircle {
+                top: 50%;
+                left: 0;
+                transform: translate(50%, -250%);
+            }
+
+            .RightCircle {
+                top: 50%;
+                right: 0;
+                transform: translate(-50%, -250%);
+            }
+
+            .swiper_wrap {
+                width: 100%;
+                overflow: hidden;
+
+                .swiper_item {
+                    border-radius: 24rem;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+            }
+
+            .swiper_item_text {
+                position: absolute;
+                z-index: 1;
+                bottom: 220rem;
+                left: 0;
+                right: 0;
+                text-align: center;
+                color: #fafafa;
+                font-family: Bai Jamjuree;
+                font-size: 20rem;
+                font-style: normal;
+                font-weight: 500;
+                padding: 0 240rem;
+            }
+
+            .customSwiperPagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 92rem;
+
+                .li {
+                    position: relative;
+                    cursor: pointer;
+
+                    img {
+                        width: 229rem;
+                        height: 136rem;
+                    }
+
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: #fafafa;
+                        font-family: Space Ranger;
+                        font-size: 20rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        white-space: nowrap;
+                    }
+                }
+
+                .li__active {
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: #30effc;
+                        font-size: 20rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+
+    .roadmap_warp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 67rem;
+        width: 100%;
+        padding: 145rem 454rem 103rem;
+        background-image: url("/image/home-banner-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+        .roadmap_title {
+            color: #30effc;
+            font-family: Space Ranger;
+            font-size: 60rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .dot_icon {
+            width: 20rem;
+            height: 20rem;
+        }
+
+        .roadmap_children {
+            .roadmap_children_title {
+                color: #30effc;
+                font-family: Space Ranger;
+                font-size: 30rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+                margin-bottom: 20rem;
+            }
+
+            .roadmap_children_description {
+                color: #fafafa;
+                font-family: Bai Jamjuree;
+                font-size: 16rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+                margin-bottom: 20rem;
+            }
+        }
+
+        :global {
+            .ant-timeline-item-tail {
+                border-style: dashed;
+            }
+
+            .ant-timeline-item-right {
+                .ant-timeline-item-head-custom {
+                    margin-top: 10rem;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 125rem;
+                        height: 0rem;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        transform: translate(-25rem, -2rem);
+                        border-top: 2rem dashed #30effc;
+                    }
+                }
+
+                .ant-timeline-item-content {
+                    padding-right: 140rem;
+                }
+            }
+
+            .ant-timeline-item-left {
+                .ant-timeline-item-head-custom {
+                    margin-top: 10rem;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 125rem;
+                        height: 0rem;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translate(25rem, -2rem);
+                        border-top: 2rem dashed #30effc;
+                    }
+                }
+
+                .ant-timeline-item-content {
+                    padding-left: 140rem;
+                }
+            }
+
+            .ant-timeline-item {
+                &:first-of-type {
+                    .ant-timeline-item-head-custom::before {
+                        display: none;
+                    }
+                }
+
+                &:last-of-type {
+                    .ant-timeline-item-head-custom::after {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+[is-device="mobile"] {
+    .banner_wrap {
+        // margin-top: 56rem;
+        position: relative;
+
+        .home_banner {
+            width: 370rem;
+            height: 208rem;
+        }
+
+        .welding {
+            position: absolute;
+            bottom: 71rem;
+            left: 105rem;
+            animation: lightning-anim 1s linear infinite;
+            width: 10rem;
+            object-fit: contain;
+
+            @keyframes lightning-anim {
+                0% {
+                    opacity: 0;
+                }
+
+                5% {
+                    opacity: 1;
+                }
+
+                10% {
+                    opacity: 0;
+                }
+
+                15% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .spray1 {
+            position: absolute;
+            bottom: 12rem;
+            left: 40rem;
+            width: 45rem;
+            object-fit: contain;
+            animation: spray-switch-1 2.5s linear 0.2s infinite alternate;
+            -moz-animation: auto;
+
+            @keyframes spray-switch-1 {
+                0% {
+                    opacity: 1;
+                }
+
+                70% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .spray2 {
+            position: absolute;
+            bottom: 24rem;
+            left: 53rem;
+            width: 30rem;
+            object-fit: contain;
+            animation: spray-switch-2 2.5s linear 0.2s infinite alternate;
+            -moz-animation: auto;
+            opacity: 0;
+
+            @keyframes spray-switch-2 {
+                0% {
+                    opacity: 0;
+                }
+
+                70% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .action {
+            width: 30rem;
+            object-fit: contain;
+            position: absolute;
+            bottom: 50rem;
+            right: 70rem;
+            opacity: 1;
+            animation: opacity-switch 1.8s linear 1.8s infinite alternate;
+
+            @keyframes opacity-switch {
+
+                // 关键帧规则
+                0% {
+                    opacity: 1;
+                }
+
+                50% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+
+        .people1 {
+            width: 102rem;
+            object-fit: contain;
+            position: absolute;
+            bottom: 4rem;
+            right: 74rem;
+            animation: people-switch-1 1.8s cubic-bezier(0.39, 0.58, 0.57, 1) infinite alternate;
+            -moz-animation: auto;
+            opacity: 0;
+
+            @keyframes people-switch-1 {
+
+                // 关键帧规则
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .people2 {
+            width: 102rem;
+            object-fit: contain;
+            position: absolute;
+            bottom: 4rem;
+            right: 74rem;
+            animation: people-switch-2 1.8s cubic-bezier(0.4, 0, 1, 1) infinite alternate;
+            -moz-animation: auto;
+
+            @keyframes people-switch-2 {
+
+                // 关键帧规则
+                0% {
+                    opacity: 1;
+                }
+
+                100% {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    .about_us_wrap {
+        padding: 35rem;
+        background-image: url("/image/home-banner-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30rem;
+
+        .about_us_left {
+            position: relative;
+
+            img {
+                width: 336rem;
+                height: 359rem;
+            }
+        }
+
+        .about_us_right {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            gap: 20rem;
+
+            .about_us_title {
+                color: #30effc;
+                font-weight: 400;
+                font-family: Space Ranger;
+                font-size: 26rem;
+            }
+
+            .about_us_describe {
+                font-family: Bai Jamjuree;
+                font-size: 14rem;
+                color: #fafafa;
+            }
+
+            .about_us_but_title {
+                color: #30effc;
+                font-weight: 400;
+                font-family: Space Ranger;
+                font-size: 16rem;
+            }
+
+            .about_us_but_box {
+                display: flex;
+                justify-content: center;
+                gap: 20rem;
+
+                .about_us_but {
+                    color: #30effc;
+                    font-family: Bai Jamjuree;
+                    font-size: 16rem;
+                    font-style: normal;
+                    width: 130rem;
+                    height: 35rem;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 8rem;
+                    background-image: url("/image/but-bg.png");
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
+
+                    &:hover {
+                        filter: brightness(1.1);
+                    }
+
+                    img {
+                        width: 18rem;
+                        height: 18rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .carousel_wrap {
+        width: 100%;
+
+        .carousel_bg {
+            position: absolute;
+            filter: blur(30rem) grayscale(60%);
+            z-index: -1;
+            height: 440rem;
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+
+        .carousel_box {
+            display: flex;
+            flex-direction: column;
+            gap: 20rem;
+            position: relative;
+            margin: 35rem;
+
+            .LeftCircle,
+            .RightCircle {
+                display: none;
+            }
+
+            .LeftCircle {
+                top: 50%;
+                left: 0;
+                transform: translate(50%, -250%);
+            }
+
+            .RightCircle {
+                top: 50%;
+                right: 0;
+                transform: translate(-50%, -250%);
+            }
+
+            .swiper_wrap {
+                width: 100%;
+                overflow: hidden;
+
+                .swiper_item {
+                    position: relative;
+                    border-radius: 24rem;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 24rem;
+                    }
+                }
+            }
+
+            .swiper_item_text {
+                text-align: center;
+                color: #fafafa;
+                font-family: Bai Jamjuree;
+                font-size: 14rem;
+                font-style: normal;
+                font-weight: 500;
+            }
+
+            .customSwiperPagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12rem;
+
+                .li {
+                    position: relative;
+
+                    img {
+                        width: 100rem;
+                        height: 50rem;
+                    }
+
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: #fafafa;
+                        font-family: Space Ranger;
+                        font-size: 10rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        white-space: nowrap;
+                    }
+                }
+
+                .li__active {
+                    span {
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        color: #30effc;
+                        font-size: 10rem;
+                        font-style: normal;
+                        font-weight: 400;
+                        line-height: normal;
+                        white-space: nowrap;
+                    }
+                }
+            }
+        }
+    }
+
+    .roadmap_warp {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 30rem;
+        width: 100%;
+        padding: 35rem;
+        background-image: url("/image/home-banner-bg.png");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+
+        .roadmap_title {
+            color: #30effc;
+            font-family: Space Ranger;
+            font-size: 35rem;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+        }
+
+        .dot_icon {
+            width: 20rem;
+            height: 20rem;
+        }
+
+        .roadmap_children {
+            .roadmap_children_title {
+                color: #30effc;
+                font-family: Space Ranger;
+                font-size: 20rem;
+                font-style: normal;
+                font-weight: 400;
+                line-height: normal;
+            }
+
+            .roadmap_children_description {
+                color: #fafafa;
+                font-family: Bai Jamjuree;
+                font-size: 12rem;
+                font-style: normal;
+                font-weight: 500;
+                line-height: normal;
+            }
+        }
+
+        :global {
+            .ant-timeline-item-tail {
+                border-style: dashed;
+            }
+
+            .ant-timeline-item-right {
+                .ant-timeline-item-head-custom {
+                    margin-top: 10rem;
+
+                    &::after {
+                        content: "";
+                        display: block;
+                        width: 125rem;
+                        height: 0rem;
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        transform: translate(-25rem, -2rem);
+                        border-top: 2rem dashed #30effc;
+                    }
+                }
+
+                .ant-timeline-item-content {
+                    padding-right: 140rem;
+                }
+            }
+
+            .ant-timeline-item-left {
+                .ant-timeline-item-head-custom {
+                    margin-top: 10rem;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 70rem;
+                        height: 0rem;
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translate(25rem, -2rem);
+                        border-top: 2rem dashed #30effc;
+                    }
+                }
+
+                .ant-timeline-item-content {
+                    padding-left: 80rem;
+                }
+            }
+
+            .ant-timeline-item {
+                &:first-of-type {
+                    .ant-timeline-item-head-custom::before {
+                        display: none;
+                    }
+                }
+
+                &:last-of-type {
+                    .ant-timeline-item-head-custom::before {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
