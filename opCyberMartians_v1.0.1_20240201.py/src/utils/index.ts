@@ -44,6 +44,7 @@ export const getUrlParams = (url: string) => {
 
 // 毫秒 转化为'00:00'
 export const formatMillisecondsToTime = (milliseconds: number) => {
+    if (milliseconds < 0) { milliseconds = 0 }
     // 计算分钟和秒钟
     const minutes = Math.floor(milliseconds / 60000);
     const seconds = Math.floor((milliseconds % 60000) / 1000);
@@ -58,6 +59,7 @@ export const formatMillisecondsToTime = (milliseconds: number) => {
 
 // 毫秒 转化为 '00::00:00' 
 export const formatMillisecondsToTime2 = (milliseconds: number) => {
+    if (milliseconds < 0) { milliseconds = 0 }
     const totalSeconds = Math.floor(milliseconds / 1000);
     const hours = Math.floor(totalSeconds / 3600);
     const minutes = Math.floor((totalSeconds % 3600) / 60);

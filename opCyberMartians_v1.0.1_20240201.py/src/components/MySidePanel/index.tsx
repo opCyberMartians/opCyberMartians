@@ -7,11 +7,8 @@ import "../../styles/font.scss";
 import { message } from "antd";
 
 import InitializeLoading from "../InitializeLoading";
-import ComingSoon from "../ComingSoon";
 import Login from "../Login";
 import Home from "../Home";
-import Quest from "../Quest";
-import Store from "../Store";
 import SimpleHome from "../SimpleHome";
 
 import logoImg from "../../assets/img/logo.png";
@@ -30,52 +27,6 @@ const getRightMargin = () => {
     return rightMargin;
   }
   return 550;
-};
-
-const tabs = [
-  {
-    label: "Home",
-    icon: homeIconImg,
-    children: <Home />,
-  },
-  {
-    label: "Quest",
-    icon: questIconImg,
-    children: <Quest />,
-  },
-  {
-    label: "Store",
-    icon: storeIconImg,
-    children: <Store />,
-  },
-];
-
-const Layout = () => {
-  const [selectTabsIndex, setSelectTabsIndex] = useState(0);
-  const handleTabsClick = (index: number) => {
-    setSelectTabsIndex(index);
-  };
-  return (
-    <div className={styles.layout}>
-      <div className={styles.tabs_list}>
-        {tabs.map((item, index) => {
-          return (
-            <div
-              className={`${styles.tabs_item} ${
-                index === selectTabsIndex ? styles.tabs_item__active : ""
-              }`}
-              key={item.label}
-              onClick={() => handleTabsClick(index)}
-            >
-              <img src={item.icon} alt="" />
-              <span>{item.label}</span>
-            </div>
-          );
-        })}
-      </div>
-      <div className={styles.container}>{tabs[selectTabsIndex].children}</div>
-    </div>
-  );
 };
 
 export default function MySidePanel() {
@@ -140,12 +91,8 @@ export default function MySidePanel() {
             onClick={handleToggleOpen}
           />
           <InitializeLoading loading={!initialized}>
-            {/* {logged ? <Layout /> : <Login />} */}
             {logged ? <SimpleHome /> : <Login />}
           </InitializeLoading>
-
-          {/* <ComingSoon /> */}
-          {/* <Layout /> */}
         </div>
       </div>
     </div>
