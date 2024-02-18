@@ -32,10 +32,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "build-dir:dev": "env-cmd -f .env.development craco build && yarn dir:dev",
-    "build-dir": "env-cmd -f .env.production craco build && yarn dir",
+    "build-dir:dev": "env-cmd -f .env.development craco build && yarn dir:dev && yarn manifest:dev",
+    "build-dir": "env-cmd -f .env.production craco build && yarn dir && yarn manifest",
     "dir:dev": "env-cmd -f .env.development parcel build src/background/index.ts src/content.ts --dist-dir build/static/js --no-cache --no-optimize",
-    "dir": "env-cmd -f .env.production parcel build src/background/index.ts src/content.ts --dist-dir build/static/js --no-cache --no-optimize"
+    "dir": "env-cmd -f .env.production parcel build src/background/index.ts src/content.ts --dist-dir build/static/js --no-cache --no-optimize",
+    "manifest:dev": "env-cmd -f .env.development node src/generate-manifest.js",
+    "manifest": "env-cmd -f .env.production node src/generate-manifest.js"
   },
   "eslintConfig": {
     "extends": [

@@ -426,7 +426,7 @@ const DailyAttendance = ({
     // ['周日', '周一', '周二',...]
     // 下标转
     // ['周一', '周二',..., '周日']
-    dayOfWeek = dayOfWeek - 1 < 0 ? 7 : dayOfWeek - 1;
+    dayOfWeek = dayOfWeek - 1 < 0 ? 6 : dayOfWeek - 1;
     setDayOfWeek(dayOfWeek);
   }, []);
 

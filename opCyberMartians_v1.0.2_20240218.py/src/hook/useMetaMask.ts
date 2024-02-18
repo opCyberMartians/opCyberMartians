@@ -48,6 +48,7 @@ export default function useMetaMask() {
     }
 
     const switchChain = async (chainId?: string | Number) => {
+        await delay(500)
         chrome.runtime.sendMessage({
             method: 'Cyber_SwitchChain',
             params: {
@@ -55,7 +56,6 @@ export default function useMetaMask() {
             }
         })
         await getStoreChainId()
-        await delay(500)
     }
 
     // 出勤签到
@@ -64,6 +64,7 @@ export default function useMetaMask() {
             await connect();
         }
         await switchChain();
+        await delay(500)
         chrome.runtime.sendMessage({
             method: "Cyber_Contract",
             params: {
